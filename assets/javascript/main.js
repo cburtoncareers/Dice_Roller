@@ -4,6 +4,8 @@ const showAllRolls = document.querySelector("#showAllRolls")
 let totalRolls = document.querySelector("#totalRolls")
 const rollsList = document.querySelector("#rollsList")
 const numberOfDice = document.querySelector("#numberOfDice")
+const resetButton = document.querySelector("#resetButton")
+
 
 let dieRolls = []
 
@@ -13,9 +15,9 @@ rollButton.addEventListener("click", function () {
     let sum = 0;
     while (counter <= diceCount) {
         //Roll Dice
-        let numberRolled = Math.floor(Math.random() * 6) + 1;
-        dieRolls.push(numberRolled);
-        sum = sum + numberRolled;
+        let numberDiceRolled = Math.floor(Math.random() * 6) + 1;
+        dieRolls.push(numberDiceRolled);
+        sum = sum + numberDiceRolled;
         counter++;
     }
 
@@ -28,33 +30,16 @@ rollButton.addEventListener("click", function () {
 
 showAllRolls.addEventListener("click", function() {
     let counter = 0;
-    while (counter < dieRolls.length) {
-        rollsList.innerHTML += "<li>" + dieRolls[counter] + "</li>";
+    while (counter < dieRolls.length){
+        rollsList.innerHTML += '<li>' + dieRolls[counter] + '</li>';
         counter++;
     }
+    
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+resetButton.addEventListener("click", function() {
+    dieRolls = [];
+    numberOfDice.innerHTML = '';
+    rollsList.innerHTML = '';
+    totalRolls.innerHTML = '';
+})
